@@ -1,0 +1,263 @@
+/* MASTER STYLESHEET - Jatim Wonderlust 
+   Design: Modern, Professional, Clean
+*/
+
+:root {
+    /* Color Palette */
+    --primary-color: #0f172a;    /* Navy Dark */
+    --accent-color: #f97316;     /* Orange */
+    --accent-hover: #ea580c;
+    --text-main: #334155;
+    --text-light: #94a3b8;
+    --bg-body: #f8fafc;
+    --white: #ffffff;
+    
+    /* System Values */
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 1. Reset & Base Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif; /* Rekomendasi font modern */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 2. Advanced Navigation (Glassmorphism) */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+nav:hover {
+    box-shadow: var(--shadow-lg);
+    width: 92%;
+}
+
+.brand {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: -1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* 3. Hero Section with Parallax Effect */
+.hero {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    background: var(--primary-color);
+    overflow: hidden;
+    margin-bottom: 80px;
+}
+
+.hero-video-bg { /* Jika ingin pakai video background */
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(15,23,42,0.4), rgba(15,23,42,0.8));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    font-weight: 900;
+}
+
+/* 4. Complex Grid System */
+.tour-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 40px;
+}
+
+/* 5. Modern Card Design */
+.tour-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 12px;
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.03);
+    cursor: pointer;
+}
+
+.tour-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-media {
+    position: relative;
+    height: 300px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.tour-card:hover .card-media img {
+    transform: scale(1.15);
+}
+
+.card-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(15, 23, 42, 0.9);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+}
+
+.card-content {
+    padding: 24px 12px;
+}
+
+.card-location {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    font-weight: 800;
+}
+
+.card-description {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 6. Advanced Buttons */
+.btn-primary {
+    background: var(--accent-color);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+}
+
+/* 7. Footer Design (Dark Theme) */
+footer {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 100px 5% 40px;
+    margin-top: 150px;
+    border-radius: 60px 60px 0 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    nav {
+        width: 95%;
+        padding: 12px 20px;
+    }
+    
+    .nav-links { display: none; } /* Mobile: Hidden for simplicity */
+    
+    .tour-container {
+        grid-template-columns: 1fr;
+    }
+}
