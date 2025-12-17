@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jatim Wonderlust | Eksplorasi Premium Jawa Timur</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.0/lucide.min.js"></script>
+    <style>
+        :root {
+            --accent: #d35400;
+            --primary: #1a1a1a;
+            --secondary: #2c3e50;
+            --bg-light: #f8f9fa;
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #eee; }
+        ::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 10px; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -1px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover { color: var(--accent); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1623886561233-000000000000?auto=format&fit=crop&w=1920&q=80'); /* Placeholder */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* --- CATEGORY FILTER --- */
+        .filter-section {
+            padding: 40px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-btn {
+            padding: 12px 25px;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* --- TOURISM GRID --- */
+        .main-container {
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
+
+        .tour-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 35px;
+        }
+
+        .tour-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .tour-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .tour-card:hover .card-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.95);
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card-body h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--secondary);
+        }
+
+        .card-body p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 25px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px dashed #eee;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 700;
+            color: #f1c40f;
+        }
+
+        .btn-view {
+            padding: 10px 20px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-view:hover { background: var(--accent); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 80px 5% 30px;
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 100px;
+            margin-bottom: 50px;
+        }
+
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-content h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="brand">JATIM.WONDER</div>
+        <div class="nav-menu">
+            <a href="#">Explore</a>
+            <a href="#">Packages</a>
+            <a href="#">Community</a>
+            <a href="#" style="background: var(--accent); color: white; padding: 10px 20px; border-radius: 10px;">Register</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The East Java<br>Legacy</h1>
+            <p>Jelajahi keajaiban alam vulkanik, pantai tersembunyi, dan warisan budaya yang tak lekang oleh waktu.</p>
+        </div>
+    </section>
+
+    <div class="filter-section">
+        <button class="filter-btn active">Semua</button>
+        <button class="filter-btn">Pegunungan</button>
+        <button class="filter-btn">Pantai</button>
+        <button class="filter-btn">Edukasi</button>
+        <button class="filter-btn">Air Terjun</button>
+    </div>
+
+    <main class="main-container">
+        <div class="tour-grid">
+            <article class="tour-card">
+                <div class="card-img-wrapper">
+                    <span class="tag">Ikonik</span>
+                    <img src="https://images.unsplash.com/photo-1588666309990-d68f08e3d4a6?auto=format&fit=crop&w=800&q=80" alt="Bromo">
+                </div>
+                <div class="card-body">
+                    <div class="location">📍 PROBOLINGGO</div>
+                    <h3>Gunung Bromo</h3>
+                    <p>Saksikan matahari terbit yang legendaris di atas lautan pasir vulkanik. Bromo menawarkan pengalaman spiritual dan visual yang tidak ada duanya di dunia.</p>
+                    <div class="card-footer">
+                        <div class="rating">⭐ 4.9 <span>(2k+)</span></div>
+                        <a href="#" class="btn-view">Detail Destinasi</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="tour-card">
+                <div class="card-img-wrapper">
+                    <span class="tag">Langka</span>
+                    <img src="https://images.unsplash.com/photo-1538332466752-df5eb5782782?auto=format&fit=crop&w=800&q=80" alt="Ijen">
+                </div>
+                <div class="card-body">
+                    <div class="location">📍 BANYUWANGI</div>
+                    <h3>Kawah Ijen</h3>
+                    <p>Rumah bagi fenomena Blue Fire yang memukau. Kawah asam terbesar di dunia ini menawarkan pemandangan danau toska yang kontras dengan bebatuan belerang.</p>
+                    <div class="card-footer">
+                        <div class="rating">⭐ 4.8 <span>(1.5k)</span></div>
+                        <a href="#" class="btn-view">Detail Destinasi</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="tour-card">
+                <div class="card-img-wrapper">
+                    <span class="tag">Megah</span>
+                    <img src="https://images.unsplash.com/photo-1590518343717-f31616f73177?auto=format&fit=crop&w=800&q=80" alt="Tumpak Sewu">
+                </div>
+                <div class="card-body">
+                    <div class="location">📍 LUMAJANG</div>
+                    <h3>Air Terjun Tumpak Sewu</h3>
+                    <p>Sering disebut sebagai Tirai Surga. Aliran air terjun yang melingkar sempurna menciptakan simfoni visual yang megah di bawah kaki Gunung Semeru.</p>
+                    <div class="card-footer">
+                        <div class="rating">⭐ 4.9 <span>(900+)</span></div>
+                        <a href="#" class="btn-view">Detail Destinasi</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h2 style="color: var(--accent); margin-bottom: 20px;">Jatim Wonderlust</h2>
+                <p style="opacity: 0.6;">Kami adalah panduan resmi perjalanan Anda untuk mengeksplorasi sisi timur pulau Jawa yang penuh keajaiban.</p>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <ul style="list-style: none; opacity: 0.6; margin-top: 20px;">
+                    <li>Gunung & Pendakian</li>
+                    <li>Wisata Bahari</li>
+                    <li>Situs Sejarah</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Office</h4>
+                <p style="opacity: 0.6; margin-top: 20px;">Jl. Basuki Rahmat No. 12<br>Surabaya, Jawa Timur</p>
+            </div>
+        </div>
+        <center style="opacity: 0.4; font-size: 0.8rem; margin-top: 40px;">&copy; 2024 Jatim Wonderlust. Made with Passion.</center>
+    </footer>
+
+</body>
+</html>
